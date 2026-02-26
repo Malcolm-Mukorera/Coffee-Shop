@@ -1,133 +1,401 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MALCOLM&CO</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MALCOLM & CO. — SPECIALTY COFFEE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
- <!--NAVIGATION -->
-    <nav>
-        <h1 class="logo">MALCOLM&CO.</h1>
-        <ul>
-            <li><a href="">Home</a></li>
-            <li><a href="">About</a></li>
-            <li><a href="">Menu</a></li>
-            <li><a href="">Contact</a></li>
-        </ul>
-    </nav>
-<!--HEADER-->
-    <header class="header">
-        <h1 class="main-headings">START YOUR DAY</h1>
-        <h1 class="primary-heading">WITH OUR COFFEE</h1>
-        <button class="main-btn">SHOP NOW</button>
 
-    </header>
-    <!--OUR STORY-->
-    <section id="our-story">
-        <div class="img-container">
-            <div class="img">
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-logo">MALCOLM&amp;CO.</div>
+  <div class="loader-bar-container"><div class="loader-bar" id="loader-bar"></div></div>
+  <div class="loader-num" id="loader-num">0%</div>
+</div>
 
-                <div class="section-content">
-                    <div class="title-style">
-                        <span class="line"></span>
-                        <h1 class="title">Our Story</h1>
-                    </div>
-                   <p>In the heart of our bustling town, our coffee shop stands as a testament to a dream nurtured with passion and determination. The story of our humble establishment begins with a fervent love for coffee and a deep-rooted desire to create a warm haven where people could escape the rigors of daily life. It all started in a small kitchen, where the aroma of freshly ground beans filled the air as we experimented with blends and brewing techniques, fueled by a vision of crafting the perfect cup. Through sleepless nights and tireless efforts, we transformed our dreams into reality, opening the doors to a cozy space that now echoes with laughter, camaraderie, and the rich scent of our carefully curated coffee. Our journey has been one of resilience, community, and shared joy—a story etched in every sip of our carefully crafted beverages. Each cup embodies the soul of our labor, and as you savor the flavors, we hope you can taste the love and dedication that brought this coffee shop to life. Welcome to our little corner of warmth and connection, where every cup tells a story of dreams fulfilled.
+<!-- GRAIN -->
+<div id="grain"></div>
+<!-- PROGRESS -->
+<div id="progress-bar"></div>
+<!-- CURSOR -->
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
 
-                   </p>
-                   <button>Learn More</button>
-                </div>
-            </div>
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">MALCOLM&amp;CO.</a>
+  <ul class="nav-links">
+    <li><a href="#our-story">Story</a></li>
+    <li><a href="#products">Menu</a></li>
+    <li><a href="#origins">Origins</a></li>
+    <li><a href="#visit">Visit</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('visit').scrollIntoView({behavior:'smooth'})">Find Us</button>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#our-story" class="mob-link">Story</a>
+  <a href="#products" class="mob-link">Menu</a>
+  <a href="#origins" class="mob-link">Origins</a>
+  <a href="#visit" class="mob-link">Visit</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-rings">
+    <div class="ring"></div><div class="ring"></div>
+    <div class="ring"></div><div class="ring"></div>
+  </div>
+  <canvas id="steam-canvas"></canvas>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">Est. 2019 — Kloof, Durban</p>
+    <h1 class="hero-title glitch">
+      START<br>
+      <span class="italic">your</span>
+      <span class="accent">DAY.</span>
+    </h1>
+  </div>
+
+  <div class="hero-bottom">
+    <p class="hero-desc">
+      Specialty coffee, carefully sourced from the world's finest growing regions.
+      Every cup is a ritual. Every visit, a story.
+    </p>
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">
+        <span>Explore Menu</span>
+      </button>
+      <span class="hero-scroll-hint"><span class="scroll-line"></span>Scroll to discover</span>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat-item"><span class="stat-num" data-target="12">0</span><span class="stat-label">Origins</span></div>
+    <div class="stat-item"><span class="stat-num" data-target="3">0</span><span class="stat-label">Blends</span></div>
+    <div class="stat-item"><span class="stat-num" data-target="5">0</span><span class="stat-label">Years</span></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track" id="marquee">
+    <span class="marquee-item">SPECIALTY COFFEE</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">SINGLE ORIGIN</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">SMALL BATCH</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">ETHICALLY SOURCED</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">HAND ROASTED</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">KLOOF, DURBAN</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">SINCE 2019</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">SPECIALTY COFFEE</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">SINGLE ORIGIN</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">SMALL BATCH</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">ETHICALLY SOURCED</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">HAND ROASTED</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">KLOOF, DURBAN</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">SINCE 2019</span><span class="marquee-dot">·</span>
+  </div>
+</div>
+
+<!-- OUR STORY -->
+<section id="our-story">
+  <div class="story-visual reveal-left">
+    <div class="story-img-frame">
+      <div class="coffee-illustration">
+        <svg class="cup-svg" viewBox="0 0 200 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M30 80 L170 80 L150 220 Q148 240 125 240 L75 240 Q52 240 50 220 Z" stroke="#c9a84c" stroke-width="2" fill="none"/>
+          <path d="M50 100 L150 100" stroke="#c9a84c" stroke-width="1" opacity="0.5"/>
+          <ellipse cx="100" cy="80" rx="70" ry="15" stroke="#c9a84c" stroke-width="2" fill="none"/>
+          <path d="M170 110 Q200 110 200 130 Q200 150 170 150" stroke="#c9a84c" stroke-width="2" fill="none"/>
+          <path d="M70 60 Q75 40 70 20" stroke="#c9a84c" stroke-width="1.5" fill="none" opacity="0.4" stroke-dasharray="4 4"/>
+          <path d="M100 55 Q105 35 100 15" stroke="#c9a84c" stroke-width="1.5" fill="none" opacity="0.4" stroke-dasharray="4 4"/>
+          <path d="M130 60 Q135 40 130 20" stroke="#c9a84c" stroke-width="1.5" fill="none" opacity="0.4" stroke-dasharray="4 4"/>
+        </svg>
+      </div>
+      <div class="story-year-tag">
+        <span class="year-num">2019</span>
+        <span class="year-label">Founded</span>
+      </div>
+    </div>
+    <div class="story-accent-block"></div>
+  </div>
+  <div class="story-text reveal-right">
+    <div class="section-label">Our Story</div>
+    <h2 class="story-heading">
+      Born from a <em>passion</em><br>for the perfect cup
+    </h2>
+    <p class="story-body">
+      In the heart of Kloof, our coffee shop began as a dream nurtured in a small kitchen — a fervent love for coffee and a desire to create a warm haven from the everyday. Through sleepless nights, endless experiments with blends and brewing techniques, we built something real.
+      <br><br>
+      Today, Malcolm&amp;Co. is more than a café. It's a corner of the world where the aroma of freshly ground beans signals the start of something good, where every cup carries the weight of that original dream.
+    </p>
+    <button class="btn-secondary">Our Journey</button>
+  </div>
+</section>
+
+<!-- COUNTER STRIP -->
+<div class="counter-strip">
+  <div class="counter-item stagger reveal">
+    <span class="counter-num" data-target="4800">0</span>
+    <span class="counter-label">Cups Served Daily</span>
+  </div>
+  <div class="counter-item stagger reveal">
+    <span class="counter-num" data-target="12">0</span>
+    <span class="counter-label">Bean Origins</span>
+  </div>
+  <div class="counter-item stagger reveal">
+    <span class="counter-num" data-target="98">0</span>
+    <span class="counter-label">% Positive Reviews</span>
+  </div>
+  <div class="counter-item stagger reveal">
+    <span class="counter-num" data-target="5">0</span>
+    <span class="counter-label">Years of Craft</span>
+  </div>
+</div>
+
+<!-- PHILOSOPHY -->
+<section id="philosophy">
+  <div class="philosophy-bg-text">COFFEE</div>
+  <div class="philosophy-inner">
+    <div class="section-label reveal">Philosophy</div>
+    <div class="philosophy-grid">
+      <div class="reveal-left">
+        <div class="philosophy-number">03</div>
+      </div>
+      <div class="philosophy-cards">
+        <div class="phil-card reveal stagger">
+          <div class="phil-card-num">01 — SOURCE</div>
+          <div class="phil-card-title">Where it begins</div>
+          <p class="phil-card-text">We establish direct relationships with growers across Ethiopia, Colombia, and Brazil — ensuring fair trade practices and sustainable farming that benefits the soil and the people who tend it.</p>
         </div>
-    </section>
-<!--LEARN MORE-->
-    <section class="coffee-container">
-
-        <div class="content-section">
-            <div class="title-style">
-                <h1 class="title-two">
-                    Perfect Place <br>
-                To Enjoy Your <br>
-            Coffee</h1>
-            </div>
-            <p>Our coffee beans, the heart and soul of our beverages, embark on an extraordinary journey from the lush, sun-kissed slopes of diverse coffee plantations around the world. Sourced with meticulous care, our beans come from regions celebrated for their distinctive flavors and exceptional quality. From the misty highlands of Ethiopia to the fertile landscapes of Colombia, each bean carries the essence of its origin, capturing the unique terroir and character of its cultivation. We take pride in establishing direct relationships with our growers, ensuring fair trade practices and sustainable farming methods. These beans, carefully harvested and expertly roasted, find their way to our coffee shop, where they become the foundation of the rich and aromatic brews that fill our space with warmth and delight. Join us on a sensory journey with every sip, as our coffee beans bring you a taste of the world's finest coffee-growing regions.
-            </p>
-            <button style="margin-top: 20px;">Learn More</button>
+        <div class="phil-card reveal stagger">
+          <div class="phil-card-num">02 — ROAST</div>
+          <div class="phil-card-title">The art of transformation</div>
+          <p class="phil-card-text">Our roasts are small-batch and carefully profiled. We aim to reveal the bean's natural character rather than impose a house style — terroir in every cup.</p>
         </div>
-        <section class="img-container">
-            <img src="Pictures/pexels-foodie-factor-539432.jpg" class="img-2">
-        </section>
-    </section>
-
-    <!--PRODUCTS-->
-
-    <section class="products">
-        <h1 class="title title-three">Products</h1>
-        
-        <section class="cards">
-            <div class="card">
-                <div class="card-img img-one"></div>
-                <div class="card-title">
-                    <h1>AMERICANO</h1>
-                </div>
-                <div class="items">
-                    <p>HOT WATER</p>
-                    <p>Espresso</p>
-                    <p>Steamed Milk</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-img img-two"></div>
-                <div class="card-title">
-                    <h1>CAPPUCCINO</h1>
-                </div>
-                <div class="items">
-                    <p>MILK FOAM</p>
-                    <p>STEAMED MILK</p>
-                    <p>ESPRESSO </p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-img img-three"></div>
-                <div class="card-title">
-                    <h1>Mocha</h1>
-                </div>
-                <div class="items">
-                    <p>Espresso</p>
-                    <p>Chocolate</p>
-                    <p>Steamed Milk</p>
-                </div>
-            </div>
-        </section>
-
-    </section>
-
-    <!--Products End-->
-
-    <!--Footer Start-->
-    <hr>
-    <footer>
-        <div class="container">
-            <h1 class="heading-info">About <span>Us</span></h1>
-            <p>Welcome to MALCOLM&CO, where every cup tells a story and every moment is an opportunity to savor the richness of life. Established with a passion for exceptional coffee and a commitment to fostering community, our coffee shop is more than just a place to enjoy a cup of your favorite brew; it's a haven where connections are forged and memories are brewed.</p>
+        <div class="phil-card reveal stagger">
+          <div class="phil-card-num">03 — SERVE</div>
+          <div class="phil-card-title">Ritual, not routine</div>
+          <p class="phil-card-text">Every cup prepared at Malcolm&amp;Co. is an act of care. Our baristas are trained not just in technique but in the philosophy of hospitality — slow down, taste, connect.</p>
         </div>
-        <div class="container">
-            <h1 class="heading-info">Contact <span>Us</span></h1>
-            <p>Phone: [062 334 7589]</p>
-            <p>Email: [malcolmandco@gmail.com]</p>
-            <p>Address: [35 Abrey rd, Kloof]</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="products-header reveal">
+    <h2 class="products-title">
+      THE<br>
+      <span>MENU</span>
+    </h2>
+    <p class="products-desc">Each beverage is a study in balance and craftsmanship. Simple ingredients. Extraordinary results.</p>
+  </div>
+  <div class="products-grid">
+    <div class="product-card reveal stagger">
+      <div class="product-tag">Classic</div>
+      <svg class="product-icon" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="40" cy="55" r="20" stroke="#c9a84c" stroke-width="1.5" fill="none"/>
+        <ellipse cx="40" cy="35" rx="20" ry="5" stroke="#c9a84c" stroke-width="1.5" fill="none"/>
+        <path d="M20 35 L20 55 M60 35 L60 55" stroke="#c9a84c" stroke-width="1.5"/>
+        <path d="M60 48 Q72 48 72 55 Q72 62 60 62" stroke="#c9a84c" stroke-width="1.5" fill="none"/>
+        <path d="M30 28 Q32 20 30 12 M40 25 Q42 17 40 9 M50 28 Q52 20 50 12" stroke="#c9a84c" stroke-width="1" opacity="0.5" stroke-dasharray="3 3"/>
+      </svg>
+      <div class="product-num">01</div>
+      <div class="product-name">Americano</div>
+      <ul class="product-ingredients">
+        <li>Espresso shot</li>
+        <li>Hot water</li>
+        <li>Optional: steamed milk</li>
+      </ul>
+      <div class="product-price">R45</div>
+    </div>
+    <div class="product-card reveal stagger">
+      <div class="product-tag">Popular</div>
+      <svg class="product-icon" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="40" cy="55" r="20" stroke="#c9a84c" stroke-width="1.5" fill="none"/>
+        <ellipse cx="40" cy="35" rx="20" ry="5" stroke="#c9a84c" stroke-width="1.5" fill="none"/>
+        <path d="M20 35 L20 55 M60 35 L60 55" stroke="#c9a84c" stroke-width="1.5"/>
+        <path d="M60 48 Q72 48 72 55 Q72 62 60 62" stroke="#c9a84c" stroke-width="1.5" fill="none"/>
+        <ellipse cx="40" cy="35" rx="20" ry="8" stroke="#c9a84c" stroke-width="1" fill="rgba(201,168,76,0.05)" opacity="0.6"/>
+        <path d="M28 26 Q40 22 52 26" stroke="#c9a84c" stroke-width="1" opacity="0.4"/>
+        <path d="M30 28 Q32 20 30 12 M50 28 Q52 20 50 12" stroke="#c9a84c" stroke-width="1" opacity="0.5" stroke-dasharray="3 3"/>
+      </svg>
+      <div class="product-num">02</div>
+      <div class="product-name">Cappuccino</div>
+      <ul class="product-ingredients">
+        <li>Double espresso</li>
+        <li>Steamed milk</li>
+        <li>Dense milk foam</li>
+      </ul>
+      <div class="product-price">R52</div>
+    </div>
+    <div class="product-card reveal stagger">
+      <div class="product-tag">Indulgent</div>
+      <svg class="product-icon" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="40" cy="55" r="20" stroke="#c9a84c" stroke-width="1.5" fill="none"/>
+        <ellipse cx="40" cy="35" rx="20" ry="5" stroke="#c9a84c" stroke-width="1.5" fill="none"/>
+        <path d="M20 35 L20 55 M60 35 L60 55" stroke="#c9a84c" stroke-width="1.5"/>
+        <path d="M60 48 Q72 48 72 55 Q72 62 60 62" stroke="#c9a84c" stroke-width="1.5" fill="none"/>
+        <path d="M32 42 Q40 38 48 42 Q40 46 32 42Z" stroke="#c9a84c" stroke-width="1" fill="rgba(201,168,76,0.1)"/>
+        <path d="M30 28 Q32 20 30 12 M40 25 Q42 17 40 9 M50 28 Q52 20 50 12" stroke="#c9a84c" stroke-width="1" opacity="0.5" stroke-dasharray="3 3"/>
+      </svg>
+      <div class="product-num">03</div>
+      <div class="product-name">Mocha</div>
+      <ul class="product-ingredients">
+        <li>Espresso shot</li>
+        <li>Dark chocolate</li>
+        <li>Steamed whole milk</li>
+      </ul>
+      <div class="product-price">R58</div>
+    </div>
+  </div>
+</section>
+
+<!-- ORIGINS -->
+<section id="origins">
+  <div class="origins-inner">
+    <div class="section-label reveal">Bean Origins</div>
+    <div class="origins-grid">
+      <div class="origin-text reveal-left">
+        <h2 class="origin-heading">From soil to cup — <em>the world's finest</em></h2>
+        <p class="origin-body">
+          Our beans travel extraordinary distances before reaching your hands. We partner directly with farmers in celebrated growing regions, building relationships that span years. The result: exceptional coffee with traceable, ethical provenance.
+        </p>
+        <div class="origin-regions" id="origin-regions">
+          <div class="region-item">
+            <span class="region-name">Ethiopia</span>
+            <div class="region-bar-container"><div class="region-bar" style="width:0" data-width="92%"></div></div>
+            <span class="region-note">Floral · Fruity</span>
+          </div>
+          <div class="region-item">
+            <span class="region-name">Colombia</span>
+            <div class="region-bar-container"><div class="region-bar" style="width:0" data-width="78%"></div></div>
+            <span class="region-note">Caramel · Nutty</span>
+          </div>
+          <div class="region-item">
+            <span class="region-name">Brazil</span>
+            <div class="region-bar-container"><div class="region-bar" style="width:0" data-width="65%"></div></div>
+            <span class="region-note">Chocolate · Low acid</span>
+          </div>
+          <div class="region-item">
+            <span class="region-name">Guatemala</span>
+            <div class="region-bar-container"><div class="region-bar" style="width:0" data-width="45%"></div></div>
+            <span class="region-note">Spiced · Complex</span>
+          </div>
         </div>
-        <div class="container">
-            <h1 class="heading-info">Opening <span>Hours</span></h1>
-            <p>Monday to Friday: 7:00 AM - 6:00 PM
-                Saturday: 8:00 AM - 4:00 PM</p>
-                <p>Sunday: Closed</p>
+      </div>
+      <div class="origin-visual reveal-right">
+        <div class="world-map-placeholder">
+          <div class="map-dots">
+            <div class="map-dot" style="top:42%; left:58%; animation-delay:0s;"></div>
+            <div class="map-dot" style="top:48%; left:22%; animation-delay:0.8s;"></div>
+            <div class="map-dot" style="top:62%; left:28%; animation-delay:1.6s;"></div>
+            <div class="map-dot" style="top:44%; left:18%; animation-delay:2.4s;"></div>
+          </div>
+          <svg width="90%" height="90%" viewBox="0 0 800 500" fill="none" xmlns="http://www.w3.org/2000/svg" opacity="0.15">
+            <path d="M80 80 Q120 60 200 80 Q240 100 260 140 Q280 180 240 220 Q200 250 160 240 Q120 220 100 200 Q70 170 60 140 Z" stroke="#c9a84c" stroke-width="1" fill="rgba(201,168,76,0.05)"/>
+            <path d="M160 250 Q200 240 230 260 Q250 290 240 340 Q230 390 200 420 Q170 440 150 420 Q120 390 130 350 Q135 310 150 280 Z" stroke="#c9a84c" stroke-width="1" fill="rgba(201,168,76,0.05)"/>
+            <path d="M330 60 Q380 50 410 70 Q430 90 420 110 Q400 130 370 120 Q345 110 330 90 Z" stroke="#c9a84c" stroke-width="1" fill="rgba(201,168,76,0.05)"/>
+            <path d="M360 130 Q410 120 440 150 Q470 180 470 240 Q465 300 440 350 Q410 390 380 380 Q340 370 320 320 Q300 270 310 210 Q320 160 360 130 Z" stroke="#c9a84c" stroke-width="1" fill="rgba(201,168,76,0.05)"/>
+            <path d="M430 60 Q520 40 620 70 Q700 100 720 150 Q710 200 660 210 Q600 220 540 200 Q480 180 440 150 Q420 120 430 90 Z" stroke="#c9a84c" stroke-width="1" fill="rgba(201,168,76,0.05)"/>
+            <path d="M600 300 Q660 280 710 300 Q740 330 730 370 Q710 400 670 400 Q630 395 610 370 Q590 340 600 310 Z" stroke="#c9a84c" stroke-width="1" fill="rgba(201,168,76,0.05)"/>
+          </svg>
         </div>
-        
-        <p class="para">Copyright @ 2023 MALCOLM&CO. | Provided by  <a href="https://linkedin.com/in/malcolm-mukorera-115430261">Malcolm Mukorera Web Dev</a></p>
-    </footer>
-     <!--Footer End-->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section id="testimonial">
+  <div class="testimonial-bg"></div>
+  <blockquote class="reveal-scale">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">Every single morning for three years. Malcolm&amp;Co. isn't just coffee — it's the ritual that makes everything else possible.</p>
+    <cite class="quote-author">— Sarah M., Regular since 2021</cite>
+  </blockquote>
+</section>
+
+<!-- VISIT -->
+<section id="visit">
+  <div class="visit-inner">
+    <div class="reveal">
+      <div class="visit-block-label">Opening Hours</div>
+      <ul class="hours-list">
+        <li class="hours-item"><span class="hours-day">Monday — Friday</span><span class="hours-time">7:00 AM — 6:00 PM</span></li>
+        <li class="hours-item"><span class="hours-day">Saturday</span><span class="hours-time">8:00 AM — 4:00 PM</span></li>
+        <li class="hours-item closed"><span class="hours-day">Sunday</span><span class="hours-time">Closed</span></li>
+      </ul>
+    </div>
+    <div class="divider-line"></div>
+    <div class="reveal">
+      <div class="visit-block-label">Contact</div>
+      <div class="contact-item"><span class="contact-label">Phone</span><span class="contact-value">062 334 7589</span></div>
+      <div class="contact-item"><span class="contact-label">Email</span><span class="contact-value">malcolmandco@gmail.com</span></div>
+      <div class="contact-item"><span class="contact-label">Address</span><span class="contact-value">35 Abrey Rd<br>Kloof, Durban</span></div>
+    </div>
+    <div class="divider-line"></div>
+    <div class="reveal">
+      <div class="visit-block-label">Location</div>
+      <div class="map-embed">
+        <div class="map-pin">📍</div>
+        <span>35 Abrey Rd, Kloof</span>
+        <button class="btn-secondary" onclick="window.open('https://maps.google.com/?q=35+Abrey+Rd+Kloof+Durban','_blank')" style="margin-top:12px">
+          Get Directions
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <span class="footer-logo">MALCOLM&amp;CO.</span>
+      <p class="footer-tagline">A specialty coffee shop in Kloof, Durban. Where every cup tells a story and every moment is an opportunity to slow down and savour something good.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Navigate</div>
+      <ul class="footer-links">
+        <li><a href="#our-story">Our Story</a></li>
+        <li><a href="#products">Menu</a></li>
+        <li><a href="#origins">Bean Origins</a></li>
+        <li><a href="#visit">Visit Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Connect</div>
+      <ul class="footer-links">
+        <li><a href="mailto:malcolmandco@gmail.com">Email Us</a></li>
+        <li><a href="tel:0623347589">Call Us</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Facebook</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2024 MALCOLM&amp;CO. All rights reserved.</span>
+    <div class="social-links">
+      <a class="social-link" href="#">IG</a>
+      <a class="social-link" href="#">FB</a>
+      <a class="social-link" href="#">TW</a>
+    </div>
+    <span class="footer-copy footer-credit">Crafted by <a href="https://linkedin.com/in/malcolm-mukorera-115430261">Malcolm Mukorera</a></span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
